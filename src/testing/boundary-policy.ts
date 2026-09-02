@@ -1,6 +1,6 @@
 /*
 <MODULE_CONTRACT>
-<purpose>Test-only pure scanner for the Projektarchiv portable-core dependency boundary.</purpose>
+<purpose>Provide a test-only pure scanner for the Projektarchiv portable-core dependency boundary.</purpose>
 <non-goals>
   <item>Do not expose this helper from the production package entrypoint.</item>
   <item>Do not encode provider adapter behavior.</item>
