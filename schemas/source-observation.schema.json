@@ -1,0 +1,97 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://warpgogol.com/schemas/projektarchiv/source-observation.schema.json",
+  "title": "SourceObservationV1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "observationId",
+    "tenantId",
+    "clientId",
+    "projectId",
+    "workspaceSnapshotId",
+    "providerItemId",
+    "state",
+    "observedAt"
+  ],
+  "properties": {
+    "schema": {
+      "const": "projektarchiv.source-observation@1"
+    },
+    "observationId": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+    },
+    "tenantId": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+    },
+    "clientId": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+    },
+    "projectId": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+    },
+    "workspaceSnapshotId": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+    },
+    "providerItemId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "state": {
+      "enum": [
+        "present",
+        "deleted",
+        "unsupported_capture"
+      ]
+    },
+    "path": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "filename": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "providerVersion": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "contentSha256": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "artifactId": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+    },
+    "artifactRevision": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "minimum": 1
+    },
+    "observedAt": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}

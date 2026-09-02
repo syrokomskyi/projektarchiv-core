@@ -1,0 +1,111 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://warpgogol.com/schemas/projektarchiv/workspace-snapshot.schema.json",
+  "title": "WorkspaceSnapshotV1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "snapshotId",
+    "tenantId",
+    "clientId",
+    "projectId",
+    "workspaceId",
+    "captureRunId",
+    "sequence",
+    "capturedAt",
+    "status",
+    "counts",
+    "integritySha256"
+  ],
+  "properties": {
+    "schema": {
+      "const": "projektarchiv.workspace-snapshot@1"
+    },
+    "snapshotId": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+    },
+    "tenantId": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+    },
+    "clientId": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+    },
+    "projectId": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+    },
+    "workspaceId": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+    },
+    "captureRunId": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+    },
+    "sequence": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "previousSnapshotId": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+    },
+    "capturedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "status": {
+      "const": "committed"
+    },
+    "providerCursor": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "counts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "total",
+        "added",
+        "modified",
+        "deleted",
+        "unchanged"
+      ],
+      "properties": {
+        "total": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "added": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "modified": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "deleted": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "unchanged": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "integritySha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    }
+  }
+}

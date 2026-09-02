@@ -1,0 +1,94 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://warpgogol.com/schemas/projektarchiv/ingestion-run.schema.json",
+  "title": "IngestionRunV1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "ingestionRunId",
+    "tenantId",
+    "clientId",
+    "projectId",
+    "workspaceSnapshotId",
+    "state",
+    "processors",
+    "createdAt"
+  ],
+  "properties": {
+    "schema": {
+      "const": "projektarchiv.ingestion-run@1"
+    },
+    "ingestionRunId": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+    },
+    "tenantId": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+    },
+    "clientId": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+    },
+    "projectId": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+    },
+    "workspaceSnapshotId": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+    },
+    "state": {
+      "enum": [
+        "requested",
+        "running",
+        "completed",
+        "failed"
+      ]
+    },
+    "processors": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "processorId",
+          "kind",
+          "version"
+        ],
+        "properties": {
+          "processorId": {
+            "type": "string"
+          },
+          "kind": {
+            "enum": [
+              "deterministic",
+              "external_ai"
+            ]
+          },
+          "version": {
+            "type": "string"
+          },
+          "policyId": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        }
+      }
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "completedAt": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date-time"
+    }
+  }
+}

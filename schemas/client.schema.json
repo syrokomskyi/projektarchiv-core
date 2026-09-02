@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://warpgogol.com/schemas/projektarchiv/client.schema.json",
+  "title": "ClientV1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "tenantId",
+    "clientId",
+    "displayName",
+    "status",
+    "createdAt"
+  ],
+  "properties": {
+    "schema": {
+      "const": "projektarchiv.client@1"
+    },
+    "tenantId": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+    },
+    "clientId": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+    },
+    "displayName": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "enum": [
+        "active",
+        "closed"
+      ]
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}

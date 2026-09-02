@@ -15,11 +15,30 @@
     ".": {
       "types": "./src/index.ts",
       "default": "./src/index.ts"
-    }
+    },
+    "./schemas": {
+      "types": "./src/schemas/index.ts",
+      "default": "./src/schemas/index.ts"
+    },
+    "./ports": {
+      "types": "./src/ports/index.ts",
+      "default": "./src/ports/index.ts"
+    },
+    "./policies": {
+      "types": "./src/policies/index.ts",
+      "default": "./src/policies/index.ts"
+    },
+    "./schemas-json/*": "./schemas/*.schema.json"
   },
   "files": [
     "dist/",
+    "schemas/",
     "src/index.ts",
+    "src/identities.ts",
+    "src/result.ts",
+    "src/policies/",
+    "src/ports/",
+    "src/schemas/",
     "LICENSE",
     "README.md"
   ],
@@ -34,8 +53,13 @@
   "engines": {
     "node": ">=24"
   },
+  "dependencies": {
+    "zod": "^4.4.3"
+  },
   "devDependencies": {
     "@types/node": "^26.2.0",
+    "ajv": "^8.20.0",
+    "ajv-formats": "^3.0.1",
     "fast-check": "^4.9.0",
     "typescript": "^6.0.3",
     "vitest": "^4.1.11"

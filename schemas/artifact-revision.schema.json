@@ -1,0 +1,143 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://warpgogol.com/schemas/projektarchiv/artifact-revision.schema.json",
+  "title": "ArtifactRevisionV1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "tenantId",
+    "clientId",
+    "projectId",
+    "artifactId",
+    "revision",
+    "contentSha256",
+    "byteSize",
+    "mediaType",
+    "objectKey",
+    "origin",
+    "createdAt"
+  ],
+  "properties": {
+    "schema": {
+      "const": "projektarchiv.artifact-revision@1"
+    },
+    "tenantId": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+    },
+    "clientId": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+    },
+    "projectId": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+    },
+    "artifactId": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+    },
+    "revision": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "contentSha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "byteSize": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "mediaType": {
+      "type": "string",
+      "minLength": 1
+    },
+    "objectKey": {
+      "type": "string",
+      "minLength": 1
+    },
+    "captureRepresentation": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "origin": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "kind",
+            "workspaceSnapshotId",
+            "providerItemId"
+          ],
+          "properties": {
+            "kind": {
+              "const": "workspace_capture"
+            },
+            "workspaceSnapshotId": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+            },
+            "providerItemId": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "kind",
+            "sourceDomain",
+            "externalEntityRef"
+          ],
+          "properties": {
+            "kind": {
+              "const": "domain_attachment"
+            },
+            "sourceDomain": {
+              "type": "string",
+              "minLength": 1
+            },
+            "externalEntityRef": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "kind",
+            "importedBy"
+          ],
+          "properties": {
+            "kind": {
+              "const": "operator_import"
+            },
+            "importedBy": {
+              "type": "string",
+              "minLength": 1
+            },
+            "sourceDescription": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}

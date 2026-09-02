@@ -1,0 +1,69 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://warpgogol.com/schemas/projektarchiv/confirmation.schema.json",
+  "title": "ConfirmationV1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "confirmationId",
+    "tenantId",
+    "clientId",
+    "projectId",
+    "subjectType",
+    "subjectId",
+    "subjectRevision",
+    "confirmedBy",
+    "confirmedAt"
+  ],
+  "properties": {
+    "schema": {
+      "const": "projektarchiv.confirmation@1"
+    },
+    "confirmationId": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+    },
+    "tenantId": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+    },
+    "clientId": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+    },
+    "projectId": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+    },
+    "subjectType": {
+      "enum": [
+        "fact_revision",
+        "legal_profile_revision"
+      ]
+    },
+    "subjectId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "subjectRevision": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "subjectSha256": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "confirmedBy": {
+      "type": "string",
+      "minLength": 1
+    },
+    "confirmedAt": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}
