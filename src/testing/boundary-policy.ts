@@ -8,6 +8,7 @@
 </MODULE_CONTRACT>
 <CHANGE_SUMMARY>
   <item>RFC-1000: add executable source and manifest boundary classification.</item>
+  <item>RFC-1000 review fix: reject provider subpaths and TypeScript import-equals declarations.</item>
 </CHANGE_SUMMARY>
 */
 
@@ -35,6 +36,14 @@ const FORBIDDEN_EXACT_PACKAGES = new Set([
   "wrangler",
 ]);
 
+function isPackageOrSubpath(specifier: string, packageName: string): boolean {
+  return (
+    specifier === packageName ||
+    specifier.startsWith(`${packageName}/`) ||
+    specifier.startsWith(`${packageName}:`)
+  );
+}
+
 export function classifyModuleSpecifier(specifier: string): string | undefined {
   if (specifier.startsWith("@warpgogol/")) {
     return "workspace dependency is forbidden in the portable core";
@@ -42,7 +51,9 @@ export function classifyModuleSpecifier(specifier: string): string | undefined {
   if (
     specifier.startsWith("cloudflare:") ||
     FORBIDDEN_PACKAGE_PREFIXES.slice(1).some((prefix) => specifier.startsWith(prefix)) ||
-    FORBIDDEN_EXACT_PACKAGES.has(specifier.split("/")[0] ?? specifier)
+    [...FORBIDDEN_EXACT_PACKAGES].some((packageName) =>
+      isPackageOrSubpath(specifier, packageName),
+    )
   ) {
     return "provider or deployment-runtime dependency is forbidden in the portable core";
   }
@@ -66,6 +77,11 @@ export function collectModuleSpecifiers(sourceText: string): readonly string[] {
   const visit = (node: ts.Node): void => {
     if (ts.isImportDeclaration(node) || ts.isExportDeclaration(node)) {
       addStringLiteral(node.moduleSpecifier);
+    } else if (
+      ts.isImportEqualsDeclaration(node) &&
+      ts.isExternalModuleReference(node.moduleReference)
+    ) {
+      addStringLiteral(node.moduleReference.expression);
     } else if (
       ts.isCallExpression(node) &&
       (node.expression.kind === ts.SyntaxKind.ImportKeyword ||

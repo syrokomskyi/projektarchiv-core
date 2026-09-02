@@ -29,6 +29,12 @@ describe("Projektarchiv portable-core boundary", () => {
     ['const value = require("googleapis");', "googleapis"],
     ['import value from "cloudflare:workers";', "cloudflare:workers"],
     ['import value from "astro";', "astro"],
+    ['import value from "astro:content";', "astro:content"],
+    ['import value from "astro/config";', "astro/config"],
+    [
+      'import forge = require("@warpgogol/forge");',
+      "@warpgogol/forge",
+    ],
   ])("extracts and rejects %s", (sourceText, specifier) => {
     expect(collectModuleSpecifiers(sourceText)).toContain(specifier);
     expect(inspectSourceText(sourceText, "/repo/core/src/file.ts", "/repo/core")).toEqual([
