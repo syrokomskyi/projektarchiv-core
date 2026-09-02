@@ -31,6 +31,8 @@ describe("Projektarchiv portable-core boundary", () => {
     ['import value from "astro";', "astro"],
     ['import value from "astro:content";', "astro:content"],
     ['import value from "astro/config";', "astro/config"],
+    ['import { readFile } from "node:fs/promises";', "node:fs/promises"],
+    ['import { readFile } from "fs";', "fs"],
     [
       'import forge = require("@warpgogol/forge");',
       "@warpgogol/forge",

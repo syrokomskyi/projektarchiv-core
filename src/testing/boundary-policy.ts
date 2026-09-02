@@ -9,10 +9,12 @@
 <CHANGE_SUMMARY>
   <item>RFC-1000: add executable source and manifest boundary classification.</item>
   <item>RFC-1000 review fix: reject provider subpaths and TypeScript import-equals declarations.</item>
+  <item>RFC-1000 review fix: reject Node.js built-in runtime dependencies from production core code.</item>
 </CHANGE_SUMMARY>
 */
 
 import { readFile, readdir } from "node:fs/promises";
+import { builtinModules } from "node:module";
 import { dirname, relative, resolve } from "node:path";
 
 import ts from "typescript";
@@ -36,6 +38,10 @@ const FORBIDDEN_EXACT_PACKAGES = new Set([
   "wrangler",
 ]);
 
+const NODE_BUILTINS = new Set(
+  builtinModules.map((moduleName) => moduleName.replace(/^node:/, "")),
+);
+
 function isPackageOrSubpath(specifier: string, packageName: string): boolean {
   return (
     specifier === packageName ||
@@ -47,6 +53,9 @@ function isPackageOrSubpath(specifier: string, packageName: string): boolean {
 export function classifyModuleSpecifier(specifier: string): string | undefined {
   if (specifier.startsWith("@warpgogol/")) {
     return "workspace dependency is forbidden in the portable core";
+  }
+  if (specifier.startsWith("node:") || NODE_BUILTINS.has(specifier)) {
+    return "Node.js runtime dependency is forbidden in the portable core";
   }
   if (
     specifier.startsWith("cloudflare:") ||
