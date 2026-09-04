@@ -1,3 +1,4 @@
+forgePlugin: false
 # extract.config.yaml — standalone package export for @warpgogol/projektarchiv-core
 
 projectDir: packages/projektarchiv-core
