@@ -4,7 +4,6 @@ forgePlugin: false
 projectDir: packages/projektarchiv-core
 destName: projektarchiv-core
 standalone: true
-versionBump: patch
 
 workspacePrefixes:
   - "@warpgogol/"
