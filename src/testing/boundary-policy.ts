@@ -13,7 +13,7 @@
 </CHANGE_SUMMARY>
 */
 
-import { readFile, readdir } from "node:fs/promises";
+import { readFile, readdir } from "../utils/fs-io.ts";
 import { builtinModules } from "node:module";
 import { dirname, relative, resolve } from "node:path";
 
@@ -25,22 +25,11 @@ export interface BoundaryViolation {
   readonly reason: string;
 }
 
-const FORBIDDEN_PACKAGE_PREFIXES = [
-  "@warpgogol/",
-  "@cloudflare/",
-  "@google-cloud/",
-] as const;
+const FORBIDDEN_PACKAGE_PREFIXES = ["@warpgogol/", "@cloudflare/", "@google-cloud/"] as const;
 
-const FORBIDDEN_EXACT_PACKAGES = new Set([
-  "astro",
-  "cloudflare",
-  "googleapis",
-  "wrangler",
-]);
+const FORBIDDEN_EXACT_PACKAGES = new Set(["astro", "cloudflare", "googleapis", "wrangler"]);
 
-const NODE_BUILTINS = new Set(
-  builtinModules.map((moduleName) => moduleName.replace(/^node:/, "")),
-);
+const NODE_BUILTINS = new Set(builtinModules.map((moduleName) => moduleName.replace(/^node:/, "")));
 
 function isPackageOrSubpath(specifier: string, packageName: string): boolean {
   return (
@@ -60,9 +49,7 @@ export function classifyModuleSpecifier(specifier: string): string | undefined {
   if (
     specifier.startsWith("cloudflare:") ||
     FORBIDDEN_PACKAGE_PREFIXES.slice(1).some((prefix) => specifier.startsWith(prefix)) ||
-    [...FORBIDDEN_EXACT_PACKAGES].some((packageName) =>
-      isPackageOrSubpath(specifier, packageName),
-    )
+    [...FORBIDDEN_EXACT_PACKAGES].some((packageName) => isPackageOrSubpath(specifier, packageName))
   ) {
     return "provider or deployment-runtime dependency is forbidden in the portable core";
   }
@@ -142,9 +129,7 @@ export function inspectRuntimeDependencies(
     if (!value || typeof value !== "object" || Array.isArray(value)) return [];
     return Object.keys(value).flatMap((specifier) => {
       const reason = classifyModuleSpecifier(specifier);
-      return reason
-        ? [{ source: `${manifestPath}#${section}`, specifier, reason }]
-        : [];
+      return reason ? [{ source: `${manifestPath}#${section}`, specifier, reason }] : [];
     });
   });
 }
