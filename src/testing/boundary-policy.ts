@@ -13,7 +13,7 @@
 </CHANGE_SUMMARY>
 */
 
-import { readFile, readdir } from "../utils/fs-io.ts";
+import { readFile, readdir } from "./fs-io.ts";
 import { builtinModules } from "node:module";
 import { dirname, relative, resolve } from "node:path";
 
