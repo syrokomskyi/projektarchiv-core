@@ -46,21 +46,11 @@
       "pattern": "^[a-z][a-z0-9_.-]*$"
     },
     "status": {
-      "enum": [
-        "extracted",
-        "reviewed",
-        "accepted",
-        "rejected",
-        "superseded",
-        "proposed_inherited"
-      ]
+      "enum": ["extracted", "reviewed", "accepted", "rejected", "superseded", "proposed_inherited"]
     },
     "value": {},
     "supersedesRevision": {
-      "type": [
-        "integer",
-        "null"
-      ],
+      "type": ["integer", "null"],
       "minimum": 1
     },
     "provenance": {
@@ -69,10 +59,7 @@
       "items": {
         "type": "object",
         "additionalProperties": false,
-        "required": [
-          "kind",
-          "sourceId"
-        ],
+        "required": ["kind", "sourceId"],
         "properties": {
           "kind": {
             "enum": [
@@ -87,16 +74,10 @@
             "minLength": 1
           },
           "locator": {
-            "type": [
-              "object",
-              "null"
-            ]
+            "type": ["object", "null"]
           },
           "processorId": {
-            "type": [
-              "string",
-              "null"
-            ]
+            "type": ["string", "null"]
           }
         }
       }

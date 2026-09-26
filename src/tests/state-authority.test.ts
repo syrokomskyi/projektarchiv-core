@@ -2,10 +2,7 @@
 
 import { describe, expect, it } from "vitest";
 
-import {
-  authorizeFactAcceptance,
-  authorizeLegalHoldActivation,
-} from "../policies/authority.ts";
+import { authorizeFactAcceptance, authorizeLegalHoldActivation } from "../policies/authority.ts";
 import {
   STATE_VALUES,
   transitionCaptureRun,
@@ -27,9 +24,7 @@ describe("state and authority policies", () => {
   it("fails closed for every self-transition", () => {
     const results = [
       ...STATE_VALUES.captureRun.map((state) => transitionCaptureRun(state, state)),
-      ...STATE_VALUES.reservation.map((state) =>
-        transitionRevisionReservation(state, state),
-      ),
+      ...STATE_VALUES.reservation.map((state) => transitionRevisionReservation(state, state)),
       ...STATE_VALUES.factRevision.map((state) => transitionFactRevision(state, state)),
       ...STATE_VALUES.project.map((state) => transitionProject(state, state)),
       ...STATE_VALUES.legalHold.map((state) => transitionLegalHold(state, state)),

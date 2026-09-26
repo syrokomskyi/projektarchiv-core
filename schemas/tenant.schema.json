@@ -4,13 +4,7 @@
   "title": "TenantV1",
   "type": "object",
   "additionalProperties": false,
-  "required": [
-    "schema",
-    "tenantId",
-    "displayName",
-    "status",
-    "createdAt"
-  ],
+  "required": ["schema", "tenantId", "displayName", "status", "createdAt"],
   "properties": {
     "schema": {
       "const": "projektarchiv.tenant@1"
@@ -24,11 +18,7 @@
       "minLength": 1
     },
     "status": {
-      "enum": [
-        "active",
-        "suspended",
-        "closed"
-      ]
+      "enum": ["active", "suspended", "closed"]
     },
     "createdAt": {
       "type": "string",

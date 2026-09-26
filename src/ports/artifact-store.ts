@@ -25,16 +25,12 @@ export interface ArtifactObjectMetadata {
 }
 
 type ArtifactStoreResult<Value> = Promise<
-  DomainResult<
-    Value,
-    "PA_SCOPE_MISMATCH" | "PA_ALREADY_EXISTS" | "PA_NOT_FOUND" | "PA_UNAVAILABLE"
-  >
+  DomainResult<Value, "PA_SCOPE_MISMATCH" | "PA_ALREADY_EXISTS" | "PA_NOT_FOUND" | "PA_UNAVAILABLE">
 >;
 
 export interface ArtifactStore {
   create(
-    request: ArtifactObjectRef &
-      ArtifactObjectMetadata & { readonly bytes: Uint8Array },
+    request: ArtifactObjectRef & ArtifactObjectMetadata & { readonly bytes: Uint8Array },
   ): ArtifactStoreResult<ArtifactObjectMetadata>;
   head(request: ArtifactObjectRef): ArtifactStoreResult<ArtifactObjectMetadata>;
   read(request: ArtifactObjectRef): ArtifactStoreResult<Uint8Array>;

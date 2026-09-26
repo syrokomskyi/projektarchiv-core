@@ -4,14 +4,7 @@
   "title": "ClientV1",
   "type": "object",
   "additionalProperties": false,
-  "required": [
-    "schema",
-    "tenantId",
-    "clientId",
-    "displayName",
-    "status",
-    "createdAt"
-  ],
+  "required": ["schema", "tenantId", "clientId", "displayName", "status", "createdAt"],
   "properties": {
     "schema": {
       "const": "projektarchiv.client@1"
@@ -29,10 +22,7 @@
       "minLength": 1
     },
     "status": {
-      "enum": [
-        "active",
-        "closed"
-      ]
+      "enum": ["active", "closed"]
     },
     "createdAt": {
       "type": "string",

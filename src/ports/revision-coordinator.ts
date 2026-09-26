@@ -10,12 +10,7 @@
 </CHANGE_SUMMARY>
 */
 
-import type {
-  ArtifactId,
-  ReservationId,
-  SnapshotId,
-  TenantScope,
-} from "../identities.ts";
+import type { ArtifactId, ReservationId, SnapshotId, TenantScope } from "../identities.ts";
 import type { DomainResult } from "../result.ts";
 import type {
   RevisionReservation,
@@ -62,9 +57,7 @@ export interface RevisionCoordinator {
   getReservationByOperation(
     request: TenantScope & { readonly operationId: string },
   ): CoordinatorResult<RevisionReservation | null>;
-  advanceReservation(
-    request: AdvanceReservationRequest,
-  ): CoordinatorResult<RevisionReservation>;
+  advanceReservation(request: AdvanceReservationRequest): CoordinatorResult<RevisionReservation>;
   publishSnapshot(request: PublishSnapshotRequest): CoordinatorResult<WorkspaceSnapshot>;
   getCurrentSnapshot(scope: TenantScope): CoordinatorResult<WorkspaceSnapshot | null>;
 }

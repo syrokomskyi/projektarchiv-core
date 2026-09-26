@@ -48,11 +48,7 @@
       "items": {
         "type": "object",
         "additionalProperties": false,
-        "required": [
-          "path",
-          "sha256",
-          "bytes"
-        ],
+        "required": ["path", "sha256", "bytes"],
         "properties": {
           "path": {
             "type": "string",
@@ -74,10 +70,7 @@
       "items": {
         "type": "object",
         "additionalProperties": false,
-        "required": [
-          "class",
-          "reason"
-        ],
+        "required": ["class", "reason"],
         "properties": {
           "class": {
             "type": "string"

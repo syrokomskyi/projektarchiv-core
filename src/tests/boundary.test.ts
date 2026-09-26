@@ -33,10 +33,7 @@ describe("Projektarchiv portable-core boundary", () => {
     ['import value from "astro/config";', "astro/config"],
     ['import { readFile } from "node:fs/promises";', "node:fs/promises"],
     ['import { readFile } from "fs";', "fs"],
-    [
-      'import forge = require("@warpgogol/forge");',
-      "@warpgogol/forge",
-    ],
+    ['import forge = require("@warpgogol/forge");', "@warpgogol/forge"],
   ])("extracts and rejects %s", (sourceText, specifier) => {
     expect(collectModuleSpecifiers(sourceText)).toContain(specifier);
     expect(inspectSourceText(sourceText, "/repo/core/src/file.ts", "/repo/core")).toEqual([

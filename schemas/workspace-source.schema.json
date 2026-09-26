@@ -52,10 +52,7 @@
       "format": "date-time"
     },
     "detachedAt": {
-      "type": [
-        "string",
-        "null"
-      ],
+      "type": ["string", "null"],
       "format": "date-time"
     }
   }

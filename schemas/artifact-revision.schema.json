@@ -59,21 +59,14 @@
       "minLength": 1
     },
     "captureRepresentation": {
-      "type": [
-        "string",
-        "null"
-      ]
+      "type": ["string", "null"]
     },
     "origin": {
       "oneOf": [
         {
           "type": "object",
           "additionalProperties": false,
-          "required": [
-            "kind",
-            "workspaceSnapshotId",
-            "providerItemId"
-          ],
+          "required": ["kind", "workspaceSnapshotId", "providerItemId"],
           "properties": {
             "kind": {
               "const": "workspace_capture"
@@ -91,11 +84,7 @@
         {
           "type": "object",
           "additionalProperties": false,
-          "required": [
-            "kind",
-            "sourceDomain",
-            "externalEntityRef"
-          ],
+          "required": ["kind", "sourceDomain", "externalEntityRef"],
           "properties": {
             "kind": {
               "const": "domain_attachment"
@@ -113,10 +102,7 @@
         {
           "type": "object",
           "additionalProperties": false,
-          "required": [
-            "kind",
-            "importedBy"
-          ],
+          "required": ["kind", "importedBy"],
           "properties": {
             "kind": {
               "const": "operator_import"
@@ -126,10 +112,7 @@
               "minLength": 1
             },
             "sourceDescription": {
-              "type": [
-                "string",
-                "null"
-              ]
+              "type": ["string", "null"]
             }
           }
         }

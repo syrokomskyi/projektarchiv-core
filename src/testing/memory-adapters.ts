@@ -96,9 +96,7 @@ export class MemoryWorkspaceSourceAdapter implements WorkspaceSourceAdapter {
     return success(item.capture);
   }
 
-  async reconcileChanges(
-    request: WorkspaceSourceRequest & { readonly after: SourceCursor },
-  ) {
+  async reconcileChanges(request: WorkspaceSourceRequest & { readonly after: SourceCursor }) {
     const checked = this.checkRequest(request);
     return (
       checked ??
@@ -130,8 +128,7 @@ export class MemoryArtifactStore implements ArtifactStore {
   constructor(private readonly authoritativeScope: TenantScope) {}
 
   async create(
-    request: ArtifactObjectRef &
-      ArtifactObjectMetadata & { readonly bytes: Uint8Array },
+    request: ArtifactObjectRef & ArtifactObjectMetadata & { readonly bytes: Uint8Array },
   ) {
     const checked = verifyScope(this.authoritativeScope, request.scope);
     if (!checked.ok) return checked;
@@ -253,15 +250,12 @@ export class MemoryRevisionCoordinator implements RevisionCoordinator {
     return success(reservation);
   }
 
-  async getReservationByOperation(
-    request: TenantScope & { readonly operationId: string },
-  ) {
+  async getReservationByOperation(request: TenantScope & { readonly operationId: string }) {
     const checked = verifyScope(this.authoritativeScope, request);
     if (!checked.ok) return checked;
     return success(
-      this.reservationsByOperation.get(
-        scopedKey(request, `operation/${request.operationId}`),
-      ) ?? null,
+      this.reservationsByOperation.get(scopedKey(request, `operation/${request.operationId}`)) ??
+        null,
     );
   }
 

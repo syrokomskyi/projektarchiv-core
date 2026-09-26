@@ -46,9 +46,7 @@ describe("JSON Schema ownership and parity", () => {
     const files = (await readdir(packagedSchemas))
       .filter((file) => file !== "ids.schema.json")
       .sort();
-    const examplesBySchema = new Map(
-      schemaExamples.map((example) => [example.schema, example]),
-    );
+    const examplesBySchema = new Map(schemaExamples.map((example) => [example.schema, example]));
     for (const file of files) {
       const document = JSON.parse(await readFile(resolve(packagedSchemas, file), "utf8"));
       const schemaTag = document.properties.schema.const as string;

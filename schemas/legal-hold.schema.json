@@ -33,10 +33,7 @@
       "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
     },
     "projectId": {
-      "type": [
-        "string",
-        "null"
-      ],
+      "type": ["string", "null"],
       "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
     },
     "targets": {
@@ -48,11 +45,7 @@
       }
     },
     "status": {
-      "enum": [
-        "active",
-        "released",
-        "expired"
-      ]
+      "enum": ["active", "released", "expired"]
     },
     "legalBasis": {
       "type": "string",
@@ -71,17 +64,11 @@
       "format": "date-time"
     },
     "expiresAt": {
-      "type": [
-        "string",
-        "null"
-      ],
+      "type": ["string", "null"],
       "format": "date-time"
     },
     "releasedAt": {
-      "type": [
-        "string",
-        "null"
-      ],
+      "type": ["string", "null"],
       "format": "date-time"
     }
   }

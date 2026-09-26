@@ -31,10 +31,8 @@ export interface DomainSuccess<Value> {
   readonly value: Value;
 }
 
-export type DomainResult<
-  Value,
-  Code extends ProjektarchivErrorCode = ProjektarchivErrorCode,
-> = DomainSuccess<Value> | DomainFailure<Code>;
+export type DomainResult<Value, Code extends ProjektarchivErrorCode = ProjektarchivErrorCode> =
+  DomainSuccess<Value> | DomainFailure<Code>;
 
 export function success<Value>(value: Value): DomainSuccess<Value> {
   return { ok: true, value };

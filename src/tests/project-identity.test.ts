@@ -21,11 +21,9 @@ describe("Project identity factory", () => {
   it("fails closed when the generator collides", () => {
     const collision = uuidV7Schema.parse(ids.project);
     expect(
-      createProjectIdentity(
-        tenantIdSchema.parse(ids.tenant),
-        clientIdSchema.parse(ids.client),
-        { next: () => collision },
-      ),
+      createProjectIdentity(tenantIdSchema.parse(ids.tenant), clientIdSchema.parse(ids.client), {
+        next: () => collision,
+      }),
     ).toEqual(expect.objectContaining({ ok: false, code: "PA_IDENTITY_COLLISION" }));
   });
 });

@@ -35,8 +35,6 @@ type CatalogResult<Value> = Promise<
 
 export interface CatalogStore {
   appendCommit(commit: CatalogCommit): CatalogResult<CatalogCommit>;
-  getCommit(
-    request: TenantScope & { readonly commitId: string },
-  ): CatalogResult<CatalogCommit>;
+  getCommit(request: TenantScope & { readonly commitId: string }): CatalogResult<CatalogCommit>;
   getCurrentCommit(scope: TenantScope): CatalogResult<CatalogCommit | null>;
 }

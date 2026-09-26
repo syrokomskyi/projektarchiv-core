@@ -59,9 +59,7 @@ export interface StorageContractAdapters {
   readonly revisionCoordinator: RevisionCoordinator;
 }
 
-export async function runStoragePortsContract(
-  adapters: StorageContractAdapters,
-): Promise<void> {
+export async function runStoragePortsContract(adapters: StorageContractAdapters): Promise<void> {
   const object = {
     scope,
     objectKey: "artifacts/example/1/original",
@@ -72,10 +70,7 @@ export async function runStoragePortsContract(
   };
   assert((await adapters.artifactStore.create(object)).ok, "first create must succeed");
   const duplicate = await adapters.artifactStore.create(object);
-  assert(
-    !duplicate.ok && duplicate.code === "PA_ALREADY_EXISTS",
-    "second create must conflict",
-  );
+  assert(!duplicate.ok && duplicate.code === "PA_ALREADY_EXISTS", "second create must conflict");
   const foreignRead = await adapters.artifactStore.read({
     scope: foreignScope,
     objectKey: object.objectKey,
@@ -168,9 +163,7 @@ export async function runStoragePortsContract(
     !reusedOperation.ok && reusedOperation.code === "PA_REVISION_CONFLICT",
     "operation id reuse for another artifact must conflict",
   );
-  const foreignCoordinator = await adapters.revisionCoordinator.getCurrentSnapshot(
-    foreignScope,
-  );
+  const foreignCoordinator = await adapters.revisionCoordinator.getCurrentSnapshot(foreignScope);
   assert(
     !foreignCoordinator.ok && foreignCoordinator.code === "PA_SCOPE_MISMATCH",
     "foreign coordinator scope must fail",

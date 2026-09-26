@@ -72,9 +72,9 @@ describe("canonical Projektarchiv record schemas", () => {
 
   it("rejects unknown keys in every public record", () => {
     schemas.forEach((schema, index) => {
-      expect(
-        schema.safeParse({ ...schemaExamples[index], providerLeak: true }).success,
-      ).toBe(false);
+      expect(schema.safeParse({ ...schemaExamples[index], providerLeak: true }).success).toBe(
+        false,
+      );
     });
   });
 
@@ -86,9 +86,7 @@ describe("canonical Projektarchiv record schemas", () => {
       for (const required of document.required) {
         const candidate = { ...schemaExamples[index] } as Record<string, unknown>;
         delete candidate[required];
-        expect(schemas[index].safeParse(candidate).success, `${file}:${required}`).toBe(
-          false,
-        );
+        expect(schemas[index].safeParse(candidate).success, `${file}:${required}`).toBe(false);
       }
     }
   });

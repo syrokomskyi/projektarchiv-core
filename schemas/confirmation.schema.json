@@ -37,10 +37,7 @@
       "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
     },
     "subjectType": {
-      "enum": [
-        "fact_revision",
-        "legal_profile_revision"
-      ]
+      "enum": ["fact_revision", "legal_profile_revision"]
     },
     "subjectId": {
       "type": "string",
@@ -51,10 +48,7 @@
       "minimum": 1
     },
     "subjectSha256": {
-      "type": [
-        "string",
-        "null"
-      ],
+      "type": ["string", "null"],
       "pattern": "^[0-9a-f]{64}$"
     },
     "confirmedBy": {

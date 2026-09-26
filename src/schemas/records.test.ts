@@ -48,9 +48,9 @@ describe("canonical record schemas (adjacent)", () => {
 
   it("rejects unknown keys in every public record", () => {
     schemas.forEach((schema, index) => {
-      expect(
-        schema.safeParse({ ...schemaExamples[index], providerLeak: true }).success,
-      ).toBe(false);
+      expect(schema.safeParse({ ...schemaExamples[index], providerLeak: true }).success).toBe(
+        false,
+      );
     });
   });
 });

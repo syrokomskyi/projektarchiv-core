@@ -4,15 +4,7 @@
   "title": "ProjectV1",
   "type": "object",
   "additionalProperties": false,
-  "required": [
-    "schema",
-    "tenantId",
-    "clientId",
-    "projectId",
-    "displayName",
-    "status",
-    "createdAt"
-  ],
+  "required": ["schema", "tenantId", "clientId", "projectId", "displayName", "status", "createdAt"],
   "properties": {
     "schema": {
       "const": "projektarchiv.project@1"
@@ -34,22 +26,14 @@
       "minLength": 1
     },
     "status": {
-      "enum": [
-        "active",
-        "closing",
-        "retention",
-        "erased"
-      ]
+      "enum": ["active", "closing", "retention", "erased"]
     },
     "createdAt": {
       "type": "string",
       "format": "date-time"
     },
     "closedAt": {
-      "type": [
-        "string",
-        "null"
-      ],
+      "type": ["string", "null"],
       "format": "date-time"
     }
   }

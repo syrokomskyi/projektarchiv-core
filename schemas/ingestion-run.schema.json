@@ -40,41 +40,26 @@
       "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
     },
     "state": {
-      "enum": [
-        "requested",
-        "running",
-        "completed",
-        "failed"
-      ]
+      "enum": ["requested", "running", "completed", "failed"]
     },
     "processors": {
       "type": "array",
       "items": {
         "type": "object",
         "additionalProperties": false,
-        "required": [
-          "processorId",
-          "kind",
-          "version"
-        ],
+        "required": ["processorId", "kind", "version"],
         "properties": {
           "processorId": {
             "type": "string"
           },
           "kind": {
-            "enum": [
-              "deterministic",
-              "external_ai"
-            ]
+            "enum": ["deterministic", "external_ai"]
           },
           "version": {
             "type": "string"
           },
           "policyId": {
-            "type": [
-              "string",
-              "null"
-            ]
+            "type": ["string", "null"]
           }
         }
       }
@@ -84,10 +69,7 @@
       "format": "date-time"
     },
     "completedAt": {
-      "type": [
-        "string",
-        "null"
-      ],
+      "type": ["string", "null"],
       "format": "date-time"
     }
   }

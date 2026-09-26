@@ -92,19 +92,13 @@ export const transitionFactRevision = (from: FactRevisionState, to: FactRevision
 export const transitionProject = (from: ProjectState, to: ProjectState) =>
   transition(projectTransitions, from, to);
 
-export const transitionLegalHold = (
-  from: LegalHoldLifecycleState,
-  to: LegalHoldLifecycleState,
-) => transition(legalHoldTransitions, from, to);
+export const transitionLegalHold = (from: LegalHoldLifecycleState, to: LegalHoldLifecycleState) =>
+  transition(legalHoldTransitions, from, to);
 
 export const STATE_VALUES = {
   captureRun: Object.freeze(Object.keys(captureRunTransitions) as CaptureRunState[]),
-  reservation: Object.freeze(
-    Object.keys(reservationTransitions) as RevisionReservationState[],
-  ),
+  reservation: Object.freeze(Object.keys(reservationTransitions) as RevisionReservationState[]),
   factRevision: Object.freeze(Object.keys(factRevisionTransitions) as FactRevisionState[]),
   project: Object.freeze(Object.keys(projectTransitions) as ProjectState[]),
-  legalHold: Object.freeze(
-    Object.keys(legalHoldTransitions) as LegalHoldLifecycleState[],
-  ),
+  legalHold: Object.freeze(Object.keys(legalHoldTransitions) as LegalHoldLifecycleState[]),
 } as const;

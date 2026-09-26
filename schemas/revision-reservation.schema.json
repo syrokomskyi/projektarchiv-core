@@ -61,17 +61,11 @@
       ]
     },
     "contentSha256": {
-      "type": [
-        "string",
-        "null"
-      ],
+      "type": ["string", "null"],
       "pattern": "^[0-9a-f]{64}$"
     },
     "expiresAt": {
-      "type": [
-        "string",
-        "null"
-      ],
+      "type": ["string", "null"],
       "format": "date-time"
     },
     "createdAt": {

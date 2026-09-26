@@ -63,9 +63,9 @@ describe("public package surface", () => {
     expect(import.meta.resolve("@warpgogol/projektarchiv-core/ports")).toContain(
       "/src/ports/index.ts",
     );
-    expect(
-      import.meta.resolve("@warpgogol/projektarchiv-core/schemas-json/tenant"),
-    ).toContain("/schemas/tenant.schema.json");
+    expect(import.meta.resolve("@warpgogol/projektarchiv-core/schemas-json/tenant")).toContain(
+      "/schemas/tenant.schema.json",
+    );
   });
 
   it("keeps all four adapter contracts structurally consumable", () => {

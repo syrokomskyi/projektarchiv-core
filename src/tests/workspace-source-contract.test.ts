@@ -3,10 +3,7 @@
 import { describe, it } from "vitest";
 
 import { workspaceIdSchema } from "../identities.ts";
-import {
-  MemoryWorkspaceSourceAdapter,
-  type MemorySourceItem,
-} from "../testing/memory-adapters.ts";
+import { MemoryWorkspaceSourceAdapter, type MemorySourceItem } from "../testing/memory-adapters.ts";
 import { runWorkspaceSourceAdapterContract } from "../testing/conformance.ts";
 import { ids, scope } from "../testing/fixtures.ts";
 
@@ -30,11 +27,7 @@ describe("Workspace source portability", () => {
       },
     };
     await runWorkspaceSourceAdapterContract(
-      new MemoryWorkspaceSourceAdapter(
-        scope,
-        workspaceIdSchema.parse(ids.workspace),
-        [item],
-      ),
+      new MemoryWorkspaceSourceAdapter(scope, workspaceIdSchema.parse(ids.workspace), [item]),
     );
   });
 });
