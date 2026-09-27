@@ -8,6 +8,7 @@ ambient through this dedicated module (kernel-io-lint exclusion).
 <non-goals>
   <item>Port plumbing — boundary-policy is a pure testing library with no kernel context.</item>
 </non-goals>
+</MODULE_CONTRACT>
 <CHANGE_SUMMARY>
   <item>RFC-1152 Wave 4: initial ambient async fs shim.</item>
 </CHANGE_SUMMARY>
