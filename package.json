@@ -1,6 +1,6 @@
 {
   "name": "@warpgogol/projektarchiv-core",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": false,
   "type": "module",
   "license": "Apache-2.0",
@@ -39,6 +39,7 @@
     "src/policies/",
     "src/ports/",
     "src/schemas/",
+    "src/testing/",
     "LICENSE",
     "README.md"
   ],
